@@ -1,8 +1,8 @@
 const indexController = {
-    getIndex: (req, res) => {
-        let nombre = 'Lucas Martín Guillén'
+    autor: 'Lucas Martín Guillén',
 
-        res.render('index',  { name: nombre });
+    getIndex: (req, res) => {
+        res.render('index',  { name: indexController.autor });
     }
 };
 
