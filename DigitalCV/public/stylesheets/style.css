@@ -11,3 +11,21 @@ body {
 a {
   color: #00B7FF;
 }
+
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-image: url('ruta/de/tu/imagen.jpg'); /* Cambiar por la ruta de tu imagen de fondo */
+  background-size: cover;
+  background-position: center;
+}
+
+.tarjeta {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Estilos adicionales para la tarjeta */
+}
