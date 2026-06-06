@@ -1,0 +1,29 @@
+[
+  {
+    "name": "DigitalCV",
+    "description": "Portfolio/CV interactivo construido con Node.js, Express y React para presentar perfil profesional, experiencia, habilidades y proyectos a recruiters.",
+    "technologies": ["Node.js", "Express", "React", "CSS", "JSON"],
+    "githubUrl": "https://github.com/completar/digitalcv",
+    "demoUrl": "",
+    "status": "En desarrollo",
+    "image": ""
+  },
+  {
+    "name": "Sistema de gestión web",
+    "description": "Proyecto placeholder para documentar una solución de gestión con autenticación, ABM de entidades, reportes y consultas SQL.",
+    "technologies": ["ASP.NET", "VB.NET", "Oracle SQL", "JavaScript", "Bootstrap"],
+    "githubUrl": "",
+    "demoUrl": "",
+    "status": "A completar",
+    "image": ""
+  },
+  {
+    "name": "API REST de práctica",
+    "description": "API de ejemplo para practicar endpoints, organización de rutas y separación entre datos, servicios y presentación.",
+    "technologies": ["Node.js", "Express", "JSON"],
+    "githubUrl": "",
+    "demoUrl": "",
+    "status": "En pausa",
+    "image": ""
+  }
+]

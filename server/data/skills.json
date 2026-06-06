@@ -1,0 +1,6 @@
+[
+  { "category": "Backend", "items": ["ASP.NET", "VB.NET", "Node.js", "Express", "APIs REST"] },
+  { "category": "Frontend", "items": ["React", "JavaScript", "HTML5", "CSS3", "Bootstrap", "jQuery", "AJAX"] },
+  { "category": "Bases de datos", "items": ["Oracle SQL", "Modelado relacional", "Consultas", "Reportes"] },
+  { "category": "Herramientas y prácticas", "items": ["Git", "Documentación técnica", "Debugging", "Responsive design", "Trabajo colaborativo"] }
+]

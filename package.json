@@ -1,18 +1,31 @@
 {
   "name": "digitalcv",
   "version": "1.0.0",
-  "description": "DigitalCV: Mi espacio personal en la web. Un CV interactivo y dinámico desarrollado con Node.js, Express, React y otras tecnologías, donde comparto mi experiencia, habilidades y proyectos",
-  "main": "index.js",
+  "description": "DigitalCV: CV interactivo y dinámico desarrollado con Node.js, Express y React.",
+  "main": "server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=production node server/index.js",
+    "dev": "cross-env NODE_ENV=development node server/index.js",
+    "server:dev": "cross-env NODE_ENV=development node server/index.js",
+    "client:build": "cross-env node scripts/build-client.js",
+    "build": "npm run client:build",
+    "test": "node --check server/index.js && node --check scripts/build-client.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "cv",
+    "portfolio",
+    "express",
+    "react"
+  ],
+  "author": "Martín Guillén",
   "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0"
   }
 }

@@ -1,0 +1,16 @@
+[
+  {
+    "institution": "Institución educativa a completar",
+    "degree": "Analista Programador de Sistemas",
+    "period": "Completar fechas",
+    "location": "Argentina",
+    "details": "Formación orientada a análisis de sistemas, programación, bases de datos, desarrollo web y buenas prácticas de ingeniería de software."
+  },
+  {
+    "institution": "Cursos / capacitaciones a completar",
+    "degree": "Actualización en desarrollo web y bases de datos",
+    "period": "Completar fechas",
+    "location": "Online / Argentina",
+    "details": "Capacitaciones complementarias en JavaScript, React, Node.js, SQL y herramientas de desarrollo."
+  }
+]

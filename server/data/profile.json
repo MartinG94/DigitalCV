@@ -1,0 +1,27 @@
+{
+  "name": "Martín Guillén",
+  "role": "Analista Programador de Sistemas",
+  "location": "Argentina",
+  "headline": "CV interactivo para compartir con recruiters y mostrar experiencia, habilidades y proyectos.",
+  "summary": "Perfil orientado al análisis, desarrollo y mantenimiento de soluciones web y sistemas de gestión. Experiencia de ejemplo para completar con datos reales: trabajo con tecnologías Microsoft, JavaScript y bases de datos relacionales, con foco en código mantenible, resolución de problemas y mejora continua.",
+  "primaryTechnologies": [
+    "ASP.NET",
+    "VB.NET",
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "Bootstrap",
+    "jQuery",
+    "AJAX",
+    "Oracle SQL",
+    "Node.js",
+    "Express",
+    "React"
+  ],
+  "contact": {
+    "email": "martin.guillen@example.com",
+    "linkedin": "https://www.linkedin.com/in/completar-linkedin",
+    "github": "https://github.com/completar-github",
+    "cvPdf": "/cv/martin-guillen-cv.pdf"
+  }
+}

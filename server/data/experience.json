@@ -1,0 +1,28 @@
+[
+  {
+    "company": "Empresa / Organización a completar",
+    "position": "Analista Programador de Sistemas",
+    "period": "Fecha de inicio - Actualidad / Completar",
+    "location": "Argentina / Remoto",
+    "summary": "Participación en análisis, desarrollo, mantenimiento y soporte de aplicaciones web y sistemas internos.",
+    "responsibilities": [
+      "Desarrollo y mantenimiento de funcionalidades con ASP.NET, VB.NET, JavaScript, jQuery y AJAX.",
+      "Diseño y optimización de consultas en Oracle SQL para reportes y procesos de negocio.",
+      "Corrección de incidencias, documentación técnica y colaboración con usuarios internos o equipos funcionales."
+    ],
+    "technologies": ["ASP.NET", "VB.NET", "JavaScript", "jQuery", "AJAX", "Oracle SQL"]
+  },
+  {
+    "company": "Proyecto académico / freelance a completar",
+    "position": "Desarrollador Web",
+    "period": "Completar período",
+    "location": "Argentina",
+    "summary": "Construcción de aplicaciones web y prototipos con tecnologías modernas para practicar arquitectura cliente-servidor.",
+    "responsibilities": [
+      "Creación de APIs REST con Node.js y Express usando datos JSON locales.",
+      "Implementación de interfaces dinámicas con React y CSS responsive.",
+      "Organización del código en componentes reutilizables y servicios de consumo de datos."
+    ],
+    "technologies": ["Node.js", "Express", "React", "HTML", "CSS"]
+  }
+]
