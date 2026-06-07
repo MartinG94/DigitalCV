@@ -4,7 +4,8 @@ const endpoints = {
   education: '/api/education',
   skills: '/api/skills',
   projects: '/api/projects',
-  achievements: '/api/achievements'
+  achievements: '/api/achievements',
+  settings: '/api/settings'
 };
 
 async function fetchJson(url) {

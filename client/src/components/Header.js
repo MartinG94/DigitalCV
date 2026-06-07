@@ -1,4 +1,6 @@
 import { h } from './ui.js';
+import { ThemeToggle } from './ThemeToggle.js';
+import { trackEvent } from '../services/trackingService.js';
 
 const navItems = [
   ['Sobre mí', '#sobre-mi'],
@@ -11,6 +13,10 @@ const navItems = [
 ];
 
 export function Header({ profile }) {
+  const trackNavigation = (label, href) => {
+    trackEvent({ type: 'click', target: 'nav', label, section: href.replace('#', '') });
+  };
+
   return h(
     'header',
     { className: 'site-header' },
@@ -21,9 +27,23 @@ export function Header({ profile }) {
       h(
         'div',
         { className: 'nav-links' },
-        ...navItems.map(([label, href]) => h('a', { key: href, href }, label))
+        ...navItems.map(([label, href]) => h('a', { key: href, href, onClick: () => trackNavigation(label, href) }, label))
       ),
-      h('a', { className: 'btn btn-small', href: profile?.contact?.cvPdf || '/cv/martin-guillen-cv.pdf' }, 'Descargar CV')
+      h(
+        'div',
+        { className: 'header-actions' },
+        h(ThemeToggle),
+        h(
+          'a',
+          {
+            className: 'btn btn-small',
+            href: profile?.contact?.cvPdf || '/cv/martin-guillen-cv.pdf',
+            onClick: () => trackEvent({ type: 'click', target: 'cv-download', label: 'Header CV PDF' })
+          },
+          'Descargar CV'
+        ),
+        h('a', { className: 'admin-link', href: '/admin' }, 'Admin')
+      )
     )
   );
 }

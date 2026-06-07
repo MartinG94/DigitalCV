@@ -1,4 +1,9 @@
 import { h, SkillBadge } from './ui.js';
+import { trackEvent } from '../services/trackingService.js';
+
+function ensureArray(value) {
+  return Array.isArray(value) ? value : [];
+}
 
 export function ExperienceCard({ item }) {
   return h(
@@ -8,8 +13,8 @@ export function ExperienceCard({ item }) {
     h('h3', null, item.position),
     h('p', { className: 'muted' }, `${item.company} · ${item.location}`),
     h('p', null, item.summary),
-    h('ul', null, ...(item.responsibilities || []).map((task) => h('li', { key: task }, task))),
-    h('div', { className: 'badge-row' }, ...(item.technologies || []).map((tech) => h(SkillBadge, { key: tech, skill: tech })))
+    h('ul', null, ...ensureArray(item.responsibilities).map((task) => h('li', { key: task }, task))),
+    h('div', { className: 'badge-row' }, ...ensureArray(item.technologies).map((tech) => h(SkillBadge, { key: tech, skill: tech })))
   );
 }
 
@@ -38,13 +43,33 @@ export function ProjectCard({ project }) {
     h('div', { className: 'status-pill' }, project.status),
     h('h3', null, project.name),
     h('p', null, project.description),
-    h('div', { className: 'badge-row' }, ...(project.technologies || []).map((tech) => h(SkillBadge, { key: tech, skill: tech }))),
+    h('div', { className: 'badge-row' }, ...ensureArray(project.technologies).map((tech) => h(SkillBadge, { key: tech, skill: tech }))),
     hasLinks &&
       h(
         'div',
         { className: 'card-actions' },
-        project.githubUrl && h('a', { href: project.githubUrl, target: '_blank', rel: 'noreferrer' }, 'GitHub'),
-        project.demoUrl && h('a', { href: project.demoUrl, target: '_blank', rel: 'noreferrer' }, 'Demo')
+        project.githubUrl &&
+          h(
+            'a',
+            {
+              href: project.githubUrl,
+              target: '_blank',
+              rel: 'noreferrer',
+              onClick: () => trackEvent({ type: 'click', target: 'github', label: `project:${project.name}` })
+            },
+            'GitHub'
+          ),
+        project.demoUrl &&
+          h(
+            'a',
+            {
+              href: project.demoUrl,
+              target: '_blank',
+              rel: 'noreferrer',
+              onClick: () => trackEvent({ type: 'click', target: 'project-demo', label: `project:${project.name}` })
+            },
+            'Demo'
+          )
       )
   );
 }

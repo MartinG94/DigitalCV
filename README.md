@@ -1,53 +1,105 @@
 # DigitalCV
 
-DigitalCV es una primera versión funcional de un CV/portfolio online para **Martín Guillén**, pensado para compartir con recruiters y presentar experiencia, formación, habilidades, logros y proyectos en una landing moderna, responsive y dinámica.
+DigitalCV es un CV/portfolio web interactivo para Martin Guillen. El sitio publico muestra perfil, experiencia, formacion, habilidades, proyectos, logros y contacto. Incluye un dashboard privado para editar contenido JSON, revisar metricas basicas y administrar configuracion general.
 
-El proyecto usa un backend con **Node.js + Express** y un frontend con **React**. Los datos iniciales se leen desde archivos JSON locales para que sea sencillo editar el contenido sin base de datos. La estructura queda preparada para crecer luego hacia una base de datos, panel administrador, autenticación o gestión de contenidos.
+## Tecnologias
 
-## Tecnologías utilizadas
+- Backend: Node.js, Express.
+- Frontend: React real, ReactDOM, React Router y Vite.
+- Estilos: Bootstrap 5 + CSS propio responsive con modo claro/oscuro.
+- Persistencia inicial: JSON local en `server/data`.
+- Auth admin: JWT con credenciales desde variables de entorno.
+- Metricas: registros anonimos en `server/data/analytics/events.json`.
 
-- **Backend:** Node.js, Express.
-- **Frontend:** componentes estilo React cargados como módulos ES en el navegador, sin paso de build obligatorio para desarrollo local.
-- **Estilos:** CSS moderno, responsive design, variables CSS, cards y layout adaptable.
-- **Datos:** JSON local en `server/data`.
-- **Build simple:** script Node que prepara `dist/client` para producción.
-
-## Estructura del proyecto
+## Estructura
 
 ```txt
-/DigitalCV
-  /client
-    /public
-      index.html
-      /cv
-    /src
-      /components
-      /sections
-      /services
-      /assets
-      App.jsx
-      main.jsx
-      styles.css
-  /server
-    /data
-      profile.json
-      experience.json
-      education.json
-      skills.json
-      projects.json
-      achievements.json
-    index.js
-  /scripts
-    build-client.js
-  README.md
-  package.json
+/client
+  index.html
+  vite.config.js
+  /public
+  /src
+    /components
+    /components/admin
+    /context
+    /pages
+    /pages/admin
+    /sections
+    /services
+    App.jsx
+    main.jsx
+    styles.css
+/server
+  /data
+  /middleware
+  /routes
+  /utils
+  index.js
 ```
 
-> Nota: se conserva la carpeta histórica `DigitalCV/` generada por Express para no borrar código existente sin necesidad. La versión funcional actual vive en `client/`, `server/` y scripts de raíz.
+La carpeta historica `DigitalCV/` se conserva para no borrar codigo existente, pero la app funcional actual vive en `client/` y `server/`.
 
-## Endpoints disponibles
+## Instalacion
 
-La API expone los siguientes endpoints:
+```bash
+npm install
+```
+
+## Variables de entorno
+
+Crear `.env` desde `.env.example`:
+
+```bash
+ADMIN_USER=admin
+ADMIN_PASSWORD=secret
+JWT_SECRET=change-this-secret
+PORT=3000
+```
+
+`.env` esta ignorado por Git.
+
+## Desarrollo
+
+```bash
+npm run dev
+```
+
+Esto levanta:
+
+- Backend Express: `http://localhost:3000`
+- Frontend Vite: `http://localhost:5173`
+
+Vite tiene proxy para `/api`, por lo que el frontend llama a endpoints como `/api/profile` sin hardcodear localhost.
+
+Rutas principales:
+
+```txt
+http://localhost:5173
+http://localhost:5173/admin/login
+http://localhost:5173/admin
+http://localhost:5173/admin/content
+http://localhost:5173/admin/projects
+http://localhost:5173/admin/stats
+http://localhost:5173/admin/settings
+```
+
+## Produccion local
+
+```bash
+npm run build
+npm start
+```
+
+El build de Vite se genera en `client/dist` y Express lo sirve en produccion. Las rutas SPA como `/admin/settings` devuelven `client/dist/index.html`; las rutas `/api` siguen devolviendo JSON.
+
+Abrir:
+
+```txt
+http://localhost:3000
+http://localhost:3000/admin/login
+```
+
+## Endpoints publicos
 
 - `GET /api/profile`
 - `GET /api/experience`
@@ -55,104 +107,60 @@ La API expone los siguientes endpoints:
 - `GET /api/skills`
 - `GET /api/projects`
 - `GET /api/achievements`
+- `GET /api/settings`
+- `POST /api/interaction`
 - `GET /api/health`
 
-## Instalación
+## Endpoints admin
 
-Desde la raíz del repositorio:
+Requieren `Authorization: Bearer <token>`.
 
-```bash
-npm install
-```
+- `POST /api/admin/login`
+- `GET /api/admin/me`
+- `POST /api/admin/logout`
+- `GET /api/admin/content`
+- `GET /api/admin/content/:resource`
+- `PUT /api/admin/content/:resource`
+- `GET /api/admin/metrics/summary`
+- `GET /api/admin/metrics/recent`
 
-## Ejecutar en desarrollo
+Recursos editables: `profile`, `experience`, `education`, `skills`, `projects`, `achievements`, `settings`.
+
+## Admin
+
+El dashboard usa React Router real:
+
+- `/admin` resumen
+- `/admin/content` contenido JSON
+- `/admin/projects` proyectos
+- `/admin/stats` metricas
+- `/admin/settings` configuracion
+
+`AdminLayout` usa `Outlet` y un `ErrorBoundary` por seccion para que un error local no rompa sidebar, navbar ni logout.
+
+## Datos
+
+Los datos se editan desde el admin o directamente en `server/data`:
+
+- `profile.json`
+- `experience.json`
+- `education.json`
+- `skills.json`
+- `projects.json`
+- `achievements.json`
+- `settings.json`
+
+## Limitaciones de JSON local
+
+La persistencia JSON sirve para esta primera version, pero en hostings gratuitos puede no ser persistente o perder cambios al redeployar. La estructura queda preparada para migrar luego a SQLite, PostgreSQL, MongoDB, Supabase o Firebase.
+
+## Scripts
 
 ```bash
 npm run dev
-```
-
-Luego abrir:
-
-```txt
-http://localhost:3000
-```
-
-En desarrollo, Express sirve el frontend desde `client/public` y `client/src`, además de exponer la API bajo `/api`.
-
-## Build para producción
-
-```bash
+npm run dev:server
+npm run dev:client
 npm run build
-```
-
-Esto genera una carpeta `dist/client` con el frontend listo para ser servido por Express.
-
-Para ejecutar el servidor en modo producción:
-
-```bash
 npm start
+npm run test
 ```
-
-## Cómo modificar los datos del CV
-
-Editar los archivos JSON ubicados en `server/data`:
-
-- `profile.json`: nombre, rol, ubicación, resumen, tecnologías principales y contacto.
-- `experience.json`: experiencia laboral, responsabilidades y tecnologías.
-- `education.json`: formación académica y capacitaciones.
-- `skills.json`: habilidades agrupadas por categoría.
-- `projects.json`: proyectos, tecnologías, links, estado e imagen opcional.
-- `achievements.json`: logros, certificaciones e hitos académicos.
-
-Los cambios se reflejan al recargar la página porque el frontend consume los endpoints del backend.
-
-## Contacto y CV en PDF
-
-La sección de contacto incluye:
-
-- Email placeholder.
-- LinkedIn placeholder.
-- GitHub placeholder.
-- Botón de descarga preparado en `/cv/martin-guillen-cv.pdf`.
-
-Cuando exista el PDF real, colocarlo en:
-
-```txt
-client/public/cv/martin-guillen-cv.pdf
-```
-
-## Deploy sugerido
-
-Opciones gratuitas compatibles:
-
-### Render o Railway
-
-1. Conectar el repositorio.
-2. Configurar build command:
-
-   ```bash
-   npm install && npm run build
-   ```
-
-3. Configurar start command:
-
-   ```bash
-   npm start
-   ```
-
-4. Asegurar que la variable `PORT` sea gestionada por la plataforma.
-
-### Vercel o Netlify
-
-Para una versión full-stack con Express puede requerirse adaptar el backend a funciones serverless. Como alternativa inicial, usar Render/Railway para desplegar frontend y backend juntos en un único servicio Node.
-
-## Próximas mejoras sugeridas
-
-- Reemplazar placeholders por datos profesionales definitivos.
-- Agregar archivo real de CV en PDF.
-- Incorporar imágenes reales de proyectos.
-- Agregar tests automatizados para endpoints y componentes.
-- Añadir un panel administrador para editar contenido.
-- Migrar datos JSON a una base de datos.
-- Incorporar autenticación para administración.
-- Agregar analytics liviano y metadatos Open Graph para compartir el perfil.

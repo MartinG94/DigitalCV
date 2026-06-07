@@ -1,0 +1,702 @@
+[
+  {
+    "id": "1780774154808-rsbexb",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T19:29:14.808Z"
+  },
+  {
+    "id": "1780774154865-6mt0hj",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T19:29:14.865Z"
+  },
+  {
+    "id": "1780774156940-bs6jzf",
+    "type": "page_view",
+    "path": "/",
+    "section": "experiencia",
+    "label": "Section experiencia",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T19:29:16.940Z"
+  },
+  {
+    "id": "1780774157714-uk0auc",
+    "type": "page_view",
+    "path": "/",
+    "section": "formacion",
+    "label": "Section formacion",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T19:29:17.714Z"
+  },
+  {
+    "id": "1780774158523-li0sto",
+    "type": "page_view",
+    "path": "/",
+    "section": "habilidades",
+    "label": "Section habilidades",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T19:29:18.524Z"
+  },
+  {
+    "id": "1780774161176-1ui2o1",
+    "type": "page_view",
+    "path": "/",
+    "section": "proyectos",
+    "label": "Section proyectos",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T19:29:21.176Z"
+  },
+  {
+    "id": "1780774161461-tvl59n",
+    "type": "page_view",
+    "path": "/",
+    "section": "logros",
+    "label": "Section logros",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T19:29:21.461Z"
+  },
+  {
+    "id": "1780774164295-zeuci1",
+    "type": "page_view",
+    "path": "/",
+    "section": "contacto",
+    "label": "Section contacto",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T19:29:24.295Z"
+  },
+  {
+    "id": "1780775913030-zzmyvm",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T19:58:33.030Z"
+  },
+  {
+    "id": "1780775913764-ljerkf",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T19:58:33.764Z"
+  },
+  {
+    "id": "1780776293657-gn37hy",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:04:53.657Z"
+  },
+  {
+    "id": "1780776293689-3lrq7c",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:04:53.689Z"
+  },
+  {
+    "id": "1780776294814-fbioz1",
+    "type": "page_view",
+    "path": "/",
+    "section": "experiencia",
+    "label": "Section experiencia",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:04:54.814Z"
+  },
+  {
+    "id": "1780776295099-48tm2h",
+    "type": "page_view",
+    "path": "/",
+    "section": "formacion",
+    "label": "Section formacion",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:04:55.099Z"
+  },
+  {
+    "id": "1780776295504-7x6sq6",
+    "type": "page_view",
+    "path": "/",
+    "section": "habilidades",
+    "label": "Section habilidades",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:04:55.504Z"
+  },
+  {
+    "id": "1780776295844-u1tm4d",
+    "type": "page_view",
+    "path": "/",
+    "section": "proyectos",
+    "label": "Section proyectos",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:04:55.844Z"
+  },
+  {
+    "id": "1780776605200-om2yv3",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:10:05.200Z"
+  },
+  {
+    "id": "1780776605228-qcdw8f",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:10:05.228Z"
+  },
+  {
+    "id": "1780777178127-qxmbq2",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:19:38.127Z"
+  },
+  {
+    "id": "1780777178771-vvxuyd",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:19:38.771Z"
+  },
+  {
+    "id": "1780777219537-09zz36",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:20:19.537Z"
+  },
+  {
+    "id": "1780777219560-81h3wk",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:20:19.560Z"
+  },
+  {
+    "id": "1780777233538-pruvl6",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:20:33.538Z"
+  },
+  {
+    "id": "1780777233562-l5o0rp",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:20:33.562Z"
+  },
+  {
+    "id": "1780777576442-if2ys8",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:26:16.442Z"
+  },
+  {
+    "id": "1780777577106-v0j6fu",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:26:17.106Z"
+  },
+  {
+    "id": "1780777660602-hnefds",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:27:40.602Z"
+  },
+  {
+    "id": "1780777661115-rjux3d",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:27:41.115Z"
+  },
+  {
+    "id": "1780777682249-yq0nn6",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:28:02.249Z"
+  },
+  {
+    "id": "1780777682273-dmbd6b",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:28:02.273Z"
+  },
+  {
+    "id": "1780778020972-npolru",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:33:40.972Z"
+  },
+  {
+    "id": "1780778021649-ighyvu",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:33:41.649Z"
+  },
+  {
+    "id": "1780778061556-cc05b6",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:34:21.556Z"
+  },
+  {
+    "id": "1780778061580-59rbd4",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:34:21.580Z"
+  },
+  {
+    "id": "1780778081325-dtolhn",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:34:41.326Z"
+  },
+  {
+    "id": "1780778081350-w6e7sb",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:34:41.350Z"
+  },
+  {
+    "id": "1780778598621-2yripj",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:43:18.621Z"
+  },
+  {
+    "id": "1780778599122-hqop2l",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:43:19.122Z"
+  },
+  {
+    "id": "1780778631989-ayedj9",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:43:51.989Z"
+  },
+  {
+    "id": "1780778632014-7on5kx",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:43:52.014Z"
+  },
+  {
+    "id": "1780778633279-qsxfm9",
+    "type": "page_view",
+    "path": "/",
+    "section": "experiencia",
+    "label": "Section experiencia",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:43:53.279Z"
+  },
+  {
+    "id": "1780778633658-90tqri",
+    "type": "page_view",
+    "path": "/",
+    "section": "formacion",
+    "label": "Section formacion",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:43:53.658Z"
+  },
+  {
+    "id": "1780778652075-99bzlb",
+    "type": "click",
+    "path": "/",
+    "target": "linkedin",
+    "label": "LinkedIn profile",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:44:12.075Z"
+  },
+  {
+    "id": "1780778692433-07iwee",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:44:52.433Z"
+  },
+  {
+    "id": "1780778692457-w5le7s",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:44:52.457Z"
+  },
+  {
+    "id": "1780778693419-l658c8",
+    "type": "click",
+    "path": "/",
+    "target": "projects",
+    "label": "Hero proyectos",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:44:53.419Z"
+  },
+  {
+    "id": "1780778693603-xgyfua",
+    "type": "page_view",
+    "path": "/#proyectos",
+    "section": "experiencia",
+    "label": "Section experiencia",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:44:53.603Z"
+  },
+  {
+    "id": "1780778693663-zemmnv",
+    "type": "page_view",
+    "path": "/#proyectos",
+    "section": "formacion",
+    "label": "Section formacion",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:44:53.663Z"
+  },
+  {
+    "id": "1780778693723-ebk8ar",
+    "type": "page_view",
+    "path": "/#proyectos",
+    "section": "habilidades",
+    "label": "Section habilidades",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:44:53.723Z"
+  },
+  {
+    "id": "1780778693879-htxa3e",
+    "type": "page_view",
+    "path": "/#proyectos",
+    "section": "proyectos",
+    "label": "Section proyectos",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:44:53.879Z"
+  },
+  {
+    "id": "1780778838478-w1mxhx",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:47:18.478Z"
+  },
+  {
+    "id": "1780778838500-ryvmgd",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:47:18.500Z"
+  },
+  {
+    "id": "1780778876609-26o0f8",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:47:56.609Z"
+  },
+  {
+    "id": "1780778876628-y9t9cf",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:47:56.628Z"
+  },
+  {
+    "id": "1780778982767-96k2qe",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:49:42.767Z"
+  },
+  {
+    "id": "1780778982789-ou6snv",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T20:49:42.789Z"
+  },
+  {
+    "id": "1780780229373-s5imye",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:5173/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-06T21:10:29.373Z"
+  },
+  {
+    "id": "1780792573505-5iqt10",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:5173/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-07T00:36:13.505Z"
+  },
+  {
+    "id": "1780792573618-r12d7b",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:5173/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-07T00:36:13.618Z"
+  },
+  {
+    "id": "1780792574590-gpd6bg",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:5173/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-07T00:36:14.590Z"
+  },
+  {
+    "id": "1780792577964-zdzdqa",
+    "type": "page_view",
+    "path": "/",
+    "section": "experiencia",
+    "label": "Section experiencia",
+    "referer": "http://localhost:5173/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-07T00:36:17.964Z"
+  },
+  {
+    "id": "1780792578689-d7rq50",
+    "type": "page_view",
+    "path": "/",
+    "section": "formacion",
+    "label": "Section formacion",
+    "referer": "http://localhost:5173/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-07T00:36:18.689Z"
+  },
+  {
+    "id": "1780792579000-oovk3i",
+    "type": "page_view",
+    "path": "/",
+    "section": "habilidades",
+    "label": "Section habilidades",
+    "referer": "http://localhost:5173/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-07T00:36:19.000Z"
+  },
+  {
+    "id": "1780792579706-wlg0rp",
+    "type": "page_view",
+    "path": "/",
+    "section": "proyectos",
+    "label": "Section proyectos",
+    "referer": "http://localhost:5173/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-07T00:36:19.706Z"
+  },
+  {
+    "id": "1780792582415-1ketxx",
+    "type": "page_view",
+    "path": "/",
+    "section": "logros",
+    "label": "Section logros",
+    "referer": "http://localhost:5173/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-07T00:36:22.415Z"
+  },
+  {
+    "id": "1780792582797-5hkzo1",
+    "type": "page_view",
+    "path": "/",
+    "section": "contacto",
+    "label": "Section contacto",
+    "referer": "http://localhost:5173/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-07T00:36:22.797Z"
+  },
+  {
+    "id": "1780792630443-2q0407",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:5173/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-07T00:37:10.443Z"
+  },
+  {
+    "id": "1780792631041-5rbhm9",
+    "type": "page_view",
+    "path": "/",
+    "section": "home",
+    "label": "Landing principal",
+    "referer": "http://localhost:5173/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-07T00:37:11.041Z"
+  },
+  {
+    "id": "1780792631676-j8fguv",
+    "type": "page_view",
+    "path": "/",
+    "section": "sobre-mi",
+    "label": "Section sobre-mi",
+    "referer": "http://localhost:5173/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-07T00:37:11.676Z"
+  },
+  {
+    "id": "1780792633480-qqd7j2",
+    "type": "page_view",
+    "path": "/",
+    "section": "experiencia",
+    "label": "Section experiencia",
+    "referer": "http://localhost:5173/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "createdAt": "2026-06-07T00:37:13.480Z"
+  }
+]

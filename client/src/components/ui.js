@@ -1,4 +1,4 @@
-import React from '../vendor/react.js';
+import React from 'react';
 
 export const h = React.createElement;
 

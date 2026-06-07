@@ -1,7 +1,14 @@
 import { h, SectionTitle, SkillBadge } from '../components/ui.js';
 import { ExperienceCard, EducationCard, ProjectCard, AchievementCard } from '../components/Cards.js';
+import { trackEvent } from '../services/trackingService.js';
 
-export function HeroSection({ profile }) {
+function ensureArray(value) {
+  return Array.isArray(value) ? value : [];
+}
+
+export function HeroSection({ profile, settings }) {
+  const technologies = ensureArray(profile.primaryTechnologies);
+
   return h(
     'section',
     { id: 'inicio', className: 'hero section' },
@@ -18,15 +25,15 @@ export function HeroSection({ profile }) {
         h(
           'div',
           { className: 'hero-actions' },
-          h('a', { className: 'btn', href: '#contacto' }, 'Contactar'),
-          h('a', { className: 'btn btn-secondary', href: '#proyectos' }, 'Ver proyectos')
+          h('a', { className: 'btn', href: '#contacto', onClick: () => trackEvent({ type: 'click', target: 'contact', label: 'Hero contactar' }) }, settings?.primaryButtonText || 'Contactar'),
+          h('a', { className: 'btn btn-secondary', href: '#proyectos', onClick: () => trackEvent({ type: 'click', target: 'projects', label: 'Hero proyectos' }) }, 'Ver proyectos')
         )
       ),
       h(
         'div',
         { className: 'hero-panel', 'aria-label': 'Resumen tecnológico' },
         h('p', null, 'Tecnologías principales'),
-        h('div', { className: 'badge-row' }, ...profile.primaryTechnologies.map((tech) => h(SkillBadge, { key: tech, skill: tech })))
+        h('div', { className: 'badge-row' }, ...technologies.map((tech) => h(SkillBadge, { key: tech, skill: tech })))
       )
     )
   );
@@ -62,7 +69,7 @@ export function ExperienceSection({ experience }) {
       'div',
       { className: 'container' },
       h(SectionTitle, { eyebrow: 'Experiencia', title: 'Trayectoria laboral', description: 'Roles, responsabilidades y tecnologías utilizadas.' }),
-      h('div', { className: 'timeline' }, ...experience.map((item) => h(ExperienceCard, { key: `${item.company}-${item.position}`, item })))
+      h('div', { className: 'timeline' }, ...ensureArray(experience).map((item) => h(ExperienceCard, { key: `${item.company}-${item.position}`, item })))
     )
   );
 }
@@ -75,7 +82,7 @@ export function EducationSection({ education }) {
       'div',
       { className: 'container' },
       h(SectionTitle, { eyebrow: 'Formación', title: 'Formación académica', description: 'Estudios y capacitaciones relevantes para el perfil técnico.' }),
-      h('div', { className: 'grid two' }, ...education.map((item) => h(EducationCard, { key: `${item.institution}-${item.degree}`, item })))
+      h('div', { className: 'grid two' }, ...ensureArray(education).map((item) => h(EducationCard, { key: `${item.institution}-${item.degree}`, item })))
     )
   );
 }
@@ -91,12 +98,12 @@ export function SkillsSection({ skills }) {
       h(
         'div',
         { className: 'grid skill-grid' },
-        ...skills.map((group) =>
+        ...ensureArray(skills).map((group) =>
           h(
             'article',
             { className: 'card skill-card', key: group.category },
             h('h3', null, group.category),
-            h('div', { className: 'badge-row' }, ...group.items.map((skill) => h(SkillBadge, { key: skill, skill })))
+            h('div', { className: 'badge-row' }, ...ensureArray(group.items).map((skill) => h(SkillBadge, { key: skill, skill })))
           )
         )
       )
@@ -112,7 +119,7 @@ export function ProjectsSection({ projects }) {
       'div',
       { className: 'container' },
       h(SectionTitle, { eyebrow: 'Portfolio', title: 'Proyectos', description: 'Muestras de trabajo, prácticas y soluciones listas para completar con links reales.' }),
-      h('div', { className: 'grid three' }, ...projects.map((project) => h(ProjectCard, { key: project.name, project })))
+      h('div', { className: 'grid three' }, ...ensureArray(projects).map((project) => h(ProjectCard, { key: project.name, project })))
     )
   );
 }
@@ -125,7 +132,7 @@ export function AchievementsSection({ achievements }) {
       'div',
       { className: 'container' },
       h(SectionTitle, { eyebrow: 'Logros', title: 'Certificaciones e hitos', description: 'Espacio para destacar logros académicos y certificaciones verificables.' }),
-      h('div', { className: 'grid two' }, ...achievements.map((item) => h(AchievementCard, { key: item.title, item })))
+      h('div', { className: 'grid two' }, ...ensureArray(achievements).map((item) => h(AchievementCard, { key: item.title, item })))
     )
   );
 }
@@ -143,10 +150,10 @@ export function ContactSection({ profile }) {
       h(
         'div',
         { className: 'contact-actions' },
-        h('a', { className: 'btn', href: `mailto:${contact.email}` }, 'Enviar email'),
-        h('a', { className: 'btn btn-secondary', href: contact.linkedin, target: '_blank', rel: 'noreferrer' }, 'LinkedIn'),
-        h('a', { className: 'btn btn-secondary', href: contact.github, target: '_blank', rel: 'noreferrer' }, 'GitHub'),
-        h('a', { className: 'btn btn-outline', href: contact.cvPdf }, 'Descargar CV PDF')
+        h('a', { className: 'btn', href: `mailto:${contact.email}`, onClick: () => trackEvent({ type: 'click', target: 'email', label: 'Email contacto' }) }, 'Enviar email'),
+        h('a', { className: 'btn btn-secondary', href: contact.linkedin, target: '_blank', rel: 'noreferrer', onClick: () => trackEvent({ type: 'click', target: 'linkedin', label: 'LinkedIn profile' }) }, 'LinkedIn'),
+        h('a', { className: 'btn btn-secondary', href: contact.github, target: '_blank', rel: 'noreferrer', onClick: () => trackEvent({ type: 'click', target: 'github', label: 'GitHub profile' }) }, 'GitHub'),
+        h('a', { className: 'btn btn-outline', href: contact.cvPdf, onClick: () => trackEvent({ type: 'click', target: 'cv-download', label: 'Contact CV PDF' }) }, 'Descargar CV PDF')
       ),
       h('p', { className: 'muted' }, `Email placeholder: ${contact.email}`)
     )
