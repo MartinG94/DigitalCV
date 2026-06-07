@@ -1,0 +1,12 @@
+{
+  "watch": ["server"],
+  "ext": "js,json",
+  "ignore": [
+    "server/data/analytics/**",
+    "server/data/analytics/*.json",
+    "client",
+    "client/dist",
+    "client/node_modules",
+    "node_modules"
+  ]
+}

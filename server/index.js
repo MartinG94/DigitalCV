@@ -10,7 +10,7 @@ const analyticsRoutes = require('./routes/analyticsRoutes');
 const { ensureJsonFile } = require('./utils/jsonStorage');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 const clientDir = path.join(__dirname, '..', 'client');
 const clientDistPath = path.join(clientDir, 'dist');
 const clientIndexPath = path.join(clientDistPath, 'index.html');
@@ -92,8 +92,18 @@ async function prepareDataFiles() {
 
 prepareDataFiles()
   .then(() => {
-    app.listen(PORT, () => {
-      console.log(`DigitalCV disponible en http://localhost:${PORT}`);
+    const server = app.listen(PORT, () => {
+      console.log(`DigitalCV API escuchando en http://localhost:${PORT}`);
+    });
+
+    server.on('error', (error) => {
+      if (error.code === 'EADDRINUSE') {
+        console.error(`El puerto ${PORT} ya está en uso. Cerrá el proceso anterior o configurá otro puerto con PORT.`);
+        process.exit(1);
+      }
+
+      console.error('No se pudo iniciar DigitalCV API.', error);
+      process.exit(1);
     });
   })
   .catch((error) => {

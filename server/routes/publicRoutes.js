@@ -5,7 +5,7 @@ const router = express.Router();
 const publicResources = Object.keys(resources).filter((resource) => resource !== 'settings');
 
 router.get('/health', (_req, res) => {
-  res.json({ status: 'ok', app: 'DigitalCV' });
+  res.json({ status: 'ok', service: 'DigitalCV API' });
 });
 
 publicResources.forEach((resource) => {

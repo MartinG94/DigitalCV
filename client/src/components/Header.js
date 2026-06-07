@@ -1,5 +1,7 @@
+import React from 'react';
 import { h } from './ui.js';
 import { ThemeToggle } from './ThemeToggle.js';
+import { useAuth } from '../context/AuthContext.jsx';
 import { trackEvent } from '../services/trackingService.js';
 
 const navItems = [
@@ -13,8 +15,13 @@ const navItems = [
 ];
 
 export function Header({ profile }) {
+  const auth = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const isAdminAuthenticated = auth?.status === 'authenticated';
+
   const trackNavigation = (label, href) => {
     trackEvent({ type: 'click', target: 'nav', label, section: href.replace('#', '') });
+    setIsMenuOpen(false);
   };
 
   return h(
@@ -22,27 +29,59 @@ export function Header({ profile }) {
     { className: 'site-header' },
     h(
       'nav',
-      { className: 'navbar container', 'aria-label': 'Navegación principal' },
-      h('a', { className: 'brand', href: '#inicio' }, h('span', null, 'MG'), h('strong', null, 'DigitalCV')),
+      { className: 'navbar navbar-expand-lg app-navbar', 'aria-label': 'Navegación principal' },
       h(
         'div',
-        { className: 'nav-links' },
-        ...navItems.map(([label, href]) => h('a', { key: href, href, onClick: () => trackNavigation(label, href) }, label))
-      ),
-      h(
-        'div',
-        { className: 'header-actions' },
-        h(ThemeToggle),
+        { className: 'container app-navbar-inner' },
+        h('a', { className: 'brand navbar-brand', href: '#inicio', onClick: () => setIsMenuOpen(false) }, h('span', null, 'MG'), h('strong', null, 'DigitalCV')),
         h(
-          'a',
+          'button',
           {
-            className: 'btn btn-small',
-            href: profile?.contact?.cvPdf || '/cv/martin-guillen-cv.pdf',
-            onClick: () => trackEvent({ type: 'click', target: 'cv-download', label: 'Header CV PDF' })
+            className: 'navbar-toggler app-navbar-toggler',
+            type: 'button',
+            'aria-controls': 'public-navbar-menu',
+            'aria-expanded': isMenuOpen,
+            'aria-label': isMenuOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación',
+            onClick: () => setIsMenuOpen((current) => !current)
           },
-          'Descargar CV'
+          h('span', { className: 'navbar-toggler-icon' })
         ),
-        h('a', { className: 'admin-link', href: '/admin' }, 'Admin')
+        h(
+          'div',
+          {
+            id: 'public-navbar-menu',
+            className: `collapse navbar-collapse app-navbar-collapse${isMenuOpen ? ' show' : ''}`
+          },
+          h(
+            'ul',
+            { className: 'navbar-nav nav-links app-nav-links mx-lg-auto' },
+            ...navItems.map(([label, href]) =>
+              h(
+                'li',
+                { key: href, className: 'nav-item' },
+                h('a', { className: 'nav-link app-nav-link', href, onClick: () => trackNavigation(label, href) }, label)
+              )
+            )
+          ),
+          h(
+            'div',
+            { className: 'header-actions app-navbar-actions' },
+            h(ThemeToggle),
+            h(
+              'a',
+              {
+                className: 'btn btn-small app-cv-button',
+                href: profile?.contact?.cvPdf || '/cv/martin-guillen-cv.pdf',
+                onClick: () => {
+                  trackEvent({ type: 'click', target: 'cv-download', label: 'Header CV PDF' });
+                  setIsMenuOpen(false);
+                }
+              },
+              'Descargar CV'
+            ),
+            isAdminAuthenticated && h('a', { className: 'admin-link', href: '/admin', onClick: () => setIsMenuOpen(false) }, 'Dashboard')
+          )
+        )
       )
     )
   );

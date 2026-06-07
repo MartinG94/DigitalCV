@@ -71,6 +71,13 @@ Esto levanta:
 
 Vite tiene proxy para `/api`, por lo que el frontend llama a endpoints como `/api/profile` sin hardcodear localhost.
 
+Verificaciones rapidas:
+
+```txt
+http://localhost:3000/api/health
+http://localhost:5173/api/health
+```
+
 Rutas principales:
 
 ```txt
@@ -164,3 +171,37 @@ npm run build
 npm start
 npm run test
 ```
+
+## Troubleshooting
+
+### Puerto 3000 ocupado en Windows
+
+Si al iniciar desarrollo aparece:
+
+```txt
+EADDRINUSE: address already in use :::3000
+```
+
+significa que ya hay otro proceso escuchando en el puerto del backend. Para ubicarlo:
+
+```bat
+netstat -ano | findstr :3000
+```
+
+Luego cerrar el proceso:
+
+```bat
+taskkill /PID <PID> /F
+```
+
+Otra opcion es usar:
+
+```bash
+npx kill-port 3000
+```
+
+Tambien se puede configurar otro puerto para Express con `PORT`, por ejemplo `PORT=3001`, pero en desarrollo local el proxy de Vite esta preparado para `http://localhost:3000`.
+
+### Reinicios de nodemon por metricas
+
+`nodemon.json` ignora `server/data/analytics/**` para que los eventos enviados a `/api/interaction` no reinicien el backend mientras se navega por el sitio.
