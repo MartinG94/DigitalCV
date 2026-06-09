@@ -5,3 +5,18 @@ tmp-chrome-profile/
 tmp-dev.*
 server/uploads/cv/*.pdf
 !server/uploads/cv/.gitkeep
+
+# Temporary runtime files
+tmp-cv-dev.*
+*.err
+*.out
+
+# Upload temporary files
+server/uploads/tmp-*
+server/uploads/**/*.err
+server/uploads/**/*.out
+server/uploads/**/*.tmp
+
+# Uploaded CV files
+server/uploads/cv/*.pdf
+!server/uploads/cv/.gitkeep
