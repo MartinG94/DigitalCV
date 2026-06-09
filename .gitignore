@@ -1,22 +1,75 @@
+# Dependencies
 node_modules/
-dist/
-.env
-tmp-chrome-profile/
-tmp-dev.*
-server/uploads/cv/*.pdf
-!server/uploads/cv/.gitkeep
+client/node_modules/
+server/node_modules/
 
-# Temporary runtime files
-tmp-cv-dev.*
+# Builds
+dist/
+client/dist/
+build/
+client/build/
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 *.err
 *.out
 
-# Upload temporary files
+# Runtime / cache
+.cache/
+.vite/
+client/.vite/
+.npm/
+.tmp/
+temp/
+tmp/
+tmp-chrome-profile/
+tmp-dev.*
+tmp-cv-dev.*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Coverage / tests
+coverage/
+
+# Local database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Uploaded CV files
+server/uploads/cv/*.pdf
+!server/uploads/cv/.gitkeep
 server/uploads/tmp-*
 server/uploads/**/*.err
 server/uploads/**/*.out
 server/uploads/**/*.tmp
 
-# Uploaded CV files
-server/uploads/cv/*.pdf
-!server/uploads/cv/.gitkeep
+# Local analytics events
+server/data/analytics/events.json
+!server/data/analytics/.gitkeep
+!server/data/analytics/events.example.json
