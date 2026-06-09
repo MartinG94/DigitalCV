@@ -1,6 +1,6 @@
 import React from 'react';
 import { h } from '../../components/ui.js';
-import { getAllContent, saveContent } from '../../services/adminService.js';
+import { getAllContent, saveContent, uploadCvPdf } from '../../services/adminService.js';
 
 const resourceLabels = {
   profile: 'Perfil',
@@ -49,6 +49,8 @@ const templates = {
     description: ''
   }
 };
+
+const maxCvSizeBytes = 5 * 1024 * 1024;
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
@@ -148,6 +150,98 @@ function ArrayEditor({ resource, value, onChange }) {
   );
 }
 
+function SettingsCvUpload({ settings, onUploaded }) {
+  const inputRef = React.useRef(null);
+  const [file, setFile] = React.useState(null);
+  const [status, setStatus] = React.useState({ loading: false, error: '', success: '' });
+  const cvUrl = settings?.cvUrl || settings?.cvPdf || '';
+  const cvFileName = settings?.cvFileName || (cvUrl ? cvUrl.split('/').filter(Boolean).pop() : '');
+
+  const validateFile = (selectedFile) => {
+    if (!selectedFile) {
+      return 'Tenes que seleccionar un archivo PDF.';
+    }
+
+    const hasPdfExtension = selectedFile.name.toLowerCase().endsWith('.pdf');
+    const hasPdfType = selectedFile.type === 'application/pdf';
+
+    if (!hasPdfExtension || !hasPdfType) {
+      return 'El archivo debe ser un PDF.';
+    }
+
+    if (selectedFile.size > maxCvSizeBytes) {
+      return 'El archivo no debe superar los 5 MB.';
+    }
+
+    return '';
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const validationError = validateFile(file);
+    if (validationError) {
+      setStatus({ loading: false, error: validationError, success: '' });
+      return;
+    }
+
+    setStatus({ loading: true, error: '', success: '' });
+
+    try {
+      const updatedSettings = await uploadCvPdf(file);
+      onUploaded(updatedSettings);
+      setFile(null);
+      if (inputRef.current) {
+        inputRef.current.value = '';
+      }
+      setStatus({ loading: false, error: '', success: 'CV actualizado correctamente.' });
+    } catch (error) {
+      setStatus({ loading: false, error: error.message || 'No se pudo subir el CV.', success: '' });
+    }
+  };
+
+  return h(
+    'fieldset',
+    { className: 'admin-fieldset admin-cv-section' },
+    h('legend', null, 'CV en PDF'),
+    h('p', { className: 'muted' }, 'Subi el archivo PDF que se descargara desde el boton Descargar CV del sitio publico.'),
+    cvUrl && h(
+      'div',
+      { className: 'admin-current-cv' },
+      h('div', null, h('strong', null, 'Archivo actual'), h('span', null, cvFileName || 'CV cargado')),
+      h(
+        'div',
+        { className: 'admin-cv-links' },
+        h('a', { className: 'btn btn-secondary btn-small', href: cvUrl, target: '_blank', rel: 'noopener noreferrer' }, 'Ver CV actual'),
+        h('a', { className: 'btn btn-outline btn-small', href: cvUrl, download: true }, 'Descargar CV actual')
+      )
+    ),
+    settings?.cvUpdatedAt && h('p', { className: 'admin-cv-updated muted' }, `Ultima actualizacion: ${new Date(settings.cvUpdatedAt).toLocaleString()}`),
+    status.error && h('div', { className: 'alert alert-danger' }, status.error || 'No se pudo subir el CV.'),
+    status.success && h('div', { className: 'alert alert-success' }, status.success),
+    h(
+      'form',
+      { className: 'admin-cv-upload', onSubmit: handleSubmit },
+      h(
+        'label',
+        { className: 'form-label' },
+        'Archivo PDF',
+        h('input', {
+          ref: inputRef,
+          className: 'form-control',
+          type: 'file',
+          accept: 'application/pdf,.pdf',
+          onChange: (event) => {
+            setFile(event.target.files?.[0] || null);
+            setStatus({ loading: false, error: '', success: '' });
+          }
+        })
+      ),
+      h('button', { className: 'btn', type: 'submit', disabled: status.loading }, status.loading ? 'Subiendo...' : 'Subir CV')
+    )
+  );
+}
+
 function ResourceEditor({ resource, value, onChange }) {
   return Array.isArray(value)
     ? h(ArrayEditor, { resource, value, onChange })
@@ -220,6 +314,10 @@ export function AdminContent({ initialResource = 'profile' }) {
     h(
       'article',
       { className: 'admin-panel' },
+      active === 'settings' && h(SettingsCvUpload, {
+        settings: state.data.settings,
+        onUploaded: (updatedSettings) => updateResource('settings', updatedSettings)
+      }),
       h(ResourceEditor, {
         resource: active,
         value: state.data[active],

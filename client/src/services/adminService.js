@@ -6,6 +6,7 @@ async function requestJson(url, options = {}) {
   const token = getToken();
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), options.timeout || defaultTimeout);
+  const isFormData = typeof FormData !== 'undefined' && options.body instanceof FormData;
 
   let response;
 
@@ -14,7 +15,7 @@ async function requestJson(url, options = {}) {
       ...options,
       signal: controller.signal,
       headers: {
-        'Content-Type': 'application/json',
+        ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
         ...(options.headers || {})
       }
@@ -52,6 +53,17 @@ export function saveContent(resource, payload) {
   return requestJson(`/api/admin/content/${resource}`, {
     method: 'PUT',
     body: JSON.stringify(payload)
+  });
+}
+
+export function uploadCvPdf(file) {
+  const formData = new FormData();
+  formData.append('cv', file);
+
+  return requestJson('/api/admin/settings/cv', {
+    method: 'POST',
+    body: formData,
+    timeout: 30000
   });
 }
 

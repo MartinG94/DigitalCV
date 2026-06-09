@@ -14,7 +14,7 @@ const PORT = Number(process.env.PORT) || 3000;
 const clientDir = path.join(__dirname, '..', 'client');
 const clientDistPath = path.join(clientDir, 'dist');
 const clientIndexPath = path.join(clientDistPath, 'index.html');
-const cvPath = path.join(clientDir, 'public', 'cv');
+const uploadsPath = path.join(__dirname, 'uploads');
 const isProduction = process.env.NODE_ENV === 'production';
 
 app.use(morgan('dev'));
@@ -34,7 +34,7 @@ const moduleStaticOptions = {
 app.use('/api', publicRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api', analyticsRoutes);
-app.use('/cv', express.static(cvPath));
+app.use('/uploads', express.static(uploadsPath));
 
 if (isProduction && fs.existsSync(clientIndexPath)) {
   app.use(express.static(clientDistPath, moduleStaticOptions));
@@ -83,7 +83,10 @@ async function prepareDataFiles() {
     email: 'martin.guillen@example.com',
     linkedin: 'https://www.linkedin.com/in/completar-linkedin',
     github: 'https://github.com/completar-github',
-    cvPdf: '/cv/martin-guillen-cv.pdf',
+    cvPdf: '',
+    cvFileName: '',
+    cvUrl: '',
+    cvUpdatedAt: '',
     primaryButtonText: 'Contactar',
     availability: 'Escuchando propuestas'
   });

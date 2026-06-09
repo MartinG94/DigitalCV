@@ -33,6 +33,7 @@ DigitalCV es un CV/portfolio web interactivo para Martin Guillen. El sitio publi
   /data
   /middleware
   /routes
+  /uploads
   /utils
   index.js
 ```
@@ -128,6 +129,7 @@ Requieren `Authorization: Bearer <token>`.
 - `GET /api/admin/content`
 - `GET /api/admin/content/:resource`
 - `PUT /api/admin/content/:resource`
+- `POST /api/admin/settings/cv`
 - `GET /api/admin/metrics/summary`
 - `GET /api/admin/metrics/recent`
 
@@ -145,6 +147,8 @@ El dashboard usa React Router real:
 
 `AdminLayout` usa `Outlet` y un `ErrorBoundary` por seccion para que un error local no rompa sidebar, navbar ni logout.
 
+En `/admin/settings`, la seccion `CV en PDF` permite subir el PDF que usa el boton `Descargar CV` del navbar publico. El archivo debe ser PDF y pesar hasta 5 MB. Al subirlo, queda disponible publicamente en `/uploads/cv/cv.pdf` y `server/data/settings.json` guarda `cvUrl`, `cvFileName` y `cvUpdatedAt`.
+
 ## Datos
 
 Los datos se editan desde el admin o directamente en `server/data`:
@@ -160,6 +164,8 @@ Los datos se editan desde el admin o directamente en `server/data`:
 ## Limitaciones de JSON local
 
 La persistencia JSON sirve para esta primera version, pero en hostings gratuitos puede no ser persistente o perder cambios al redeployar. La estructura queda preparada para migrar luego a SQLite, PostgreSQL, MongoDB, Supabase o Firebase.
+
+El PDF cargado desde el admin se guarda actualmente en filesystem local: `server/uploads/cv/cv.pdf`. Esto funciona localmente y puede funcionar en algunos hostings, pero en hostings gratuitos con filesystem efimero el archivo puede perderse al redeployar o reiniciar. En una version futura conviene migrar estos archivos a almacenamiento persistente como Supabase Storage, Cloudinary, S3 compatible, Firebase Storage u otro servicio equivalente.
 
 ## Scripts
 

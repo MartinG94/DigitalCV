@@ -153,7 +153,7 @@ export function ContactSection({ profile }) {
         h('a', { className: 'btn', href: `mailto:${contact.email}`, onClick: () => trackEvent({ type: 'click', target: 'email', label: 'Email contacto' }) }, 'Enviar email'),
         h('a', { className: 'btn btn-secondary', href: contact.linkedin, target: '_blank', rel: 'noreferrer', onClick: () => trackEvent({ type: 'click', target: 'linkedin', label: 'LinkedIn profile' }) }, 'LinkedIn'),
         h('a', { className: 'btn btn-secondary', href: contact.github, target: '_blank', rel: 'noreferrer', onClick: () => trackEvent({ type: 'click', target: 'github', label: 'GitHub profile' }) }, 'GitHub'),
-        h('a', { className: 'btn btn-outline', href: contact.cvPdf, onClick: () => trackEvent({ type: 'click', target: 'cv-download', label: 'Contact CV PDF' }) }, 'Descargar CV PDF')
+        contact.cvPdf && h('a', { className: 'btn btn-outline', href: contact.cvPdf, download: true, onClick: () => trackEvent({ type: 'click', target: 'cv-download', label: 'Contact CV PDF' }) }, 'Descargar CV PDF')
       ),
       h('p', { className: 'muted' }, `Email placeholder: ${contact.email}`)
     )

@@ -18,6 +18,7 @@ export function Header({ profile }) {
   const auth = useAuth();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const isAdminAuthenticated = auth?.status === 'authenticated';
+  const cvPdf = profile?.contact?.cvPdf;
 
   const trackNavigation = (label, href) => {
     trackEvent({ type: 'click', target: 'nav', label, section: href.replace('#', '') });
@@ -67,11 +68,14 @@ export function Header({ profile }) {
             'div',
             { className: 'header-actions app-navbar-actions' },
             h(ThemeToggle),
-            h(
+            cvPdf && h(
               'a',
               {
                 className: 'btn btn-small app-cv-button',
-                href: profile?.contact?.cvPdf || '/cv/martin-guillen-cv.pdf',
+                href: cvPdf,
+                target: '_blank',
+                rel: 'noopener noreferrer',
+                download: true,
                 onClick: () => {
                   trackEvent({ type: 'click', target: 'cv-download', label: 'Header CV PDF' });
                   setIsMenuOpen(false);

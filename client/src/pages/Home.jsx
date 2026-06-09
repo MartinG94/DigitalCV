@@ -33,7 +33,7 @@ export function Home({ data }) {
       email: settings.email || profile.contact?.email,
       linkedin: settings.linkedin || profile.contact?.linkedin,
       github: settings.github || profile.contact?.github,
-      cvPdf: settings.cvPdf || profile.contact?.cvPdf
+      cvPdf: settings.cvUrl || ''
     }
   };
 

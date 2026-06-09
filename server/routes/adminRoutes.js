@@ -1,9 +1,15 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const multer = require('multer');
 const { requireAuth, signAdminToken } = require('../middleware/authMiddleware');
 const { resources, readResource, writeResource } = require('../utils/jsonStorage');
 
 const router = express.Router();
 const editableResources = Object.keys(resources);
+const maxCvSizeBytes = 5 * 1024 * 1024;
+const cvUploadDir = path.join(__dirname, '..', 'uploads', 'cv');
+const cvPublicUrl = '/api/cv/download';
 const requiredFields = {
   profile: ['name', 'role'],
   settings: ['siteTitle', 'email'],
@@ -13,6 +19,37 @@ const requiredFields = {
   projects: ['name', 'status'],
   achievements: ['title']
 };
+
+const cvStorage = multer.diskStorage({
+  destination: (_req, _file, callback) => {
+    fs.mkdir(cvUploadDir, { recursive: true }, (error) => callback(error, cvUploadDir));
+  },
+  filename: (_req, _file, callback) => {
+    callback(null, 'cv.pdf');
+  }
+});
+
+function createBadRequest(message) {
+  const error = new Error(message);
+  error.status = 400;
+  return error;
+}
+
+function isPdfFile(file) {
+  return file?.mimetype === 'application/pdf' && path.extname(file.originalname || '').toLowerCase() === '.pdf';
+}
+
+const uploadCv = multer({
+  storage: cvStorage,
+  limits: { fileSize: maxCvSizeBytes },
+  fileFilter: (_req, file, callback) => {
+    if (!isPdfFile(file)) {
+      return callback(createBadRequest('El archivo debe ser un PDF.'));
+    }
+
+    return callback(null, true);
+  }
+}).single('cv');
 
 function isEmptyObject(value) {
   return value && typeof value === 'object' && !Array.isArray(value) && Object.values(value).every((entry) => {
@@ -123,6 +160,44 @@ router.get('/me', requireAuth, (req, res) => {
 
 router.post('/logout', requireAuth, (_req, res) => {
   res.json({ ok: true });
+});
+
+router.post('/settings/cv', requireAuth, (req, res, next) => {
+  uploadCv(req, res, async (error) => {
+    try {
+      if (error) {
+        if (error instanceof multer.MulterError && error.code === 'LIMIT_FILE_SIZE') {
+          return res.status(400).json({ message: 'El archivo no debe superar los 5 MB.' });
+        }
+
+        if (error instanceof multer.MulterError && error.code === 'LIMIT_UNEXPECTED_FILE') {
+          return res.status(400).json({ message: 'El campo del archivo debe llamarse cv.' });
+        }
+
+        return res.status(error.status || 400).json({ message: error.message || 'No se pudo subir el CV.' });
+      }
+
+      if (!req.file) {
+        return res.status(400).json({ message: 'Tenes que seleccionar un archivo PDF.' });
+      }
+
+      if (!isPdfFile(req.file)) {
+        return res.status(400).json({ message: 'El archivo debe ser un PDF.' });
+      }
+
+      const settings = await readResource('settings');
+      const updatedSettings = {
+        ...settings,
+        cvFileName: 'cv.pdf',
+        cvUrl: cvPublicUrl,
+        cvUpdatedAt: new Date().toISOString()
+      };
+
+      res.json(await writeResource('settings', updatedSettings));
+    } catch (uploadError) {
+      next(uploadError);
+    }
+  });
 });
 
 router.get('/content', requireAuth, async (_req, res, next) => {

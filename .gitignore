@@ -3,3 +3,5 @@ dist/
 .env
 tmp-chrome-profile/
 tmp-dev.*
+server/uploads/cv/*.pdf
+!server/uploads/cv/.gitkeep

@@ -5,7 +5,10 @@
   "email": "guillenmartin94@gmail.com",
   "linkedin": "https://www.linkedin.com/in/lmguillen/",
   "github": "https://github.com/MartinG94",
-  "cvPdf": "/cv/martin-guillen-cv.pdf",
+  "cvPdf": "",
+  "cvFileName": "cv.pdf",
+  "cvUrl": "/api/cv/download",
+  "cvUpdatedAt": "2026-06-09T01:40:31.382Z",
   "primaryButtonText": "Contactar",
   "availability": "Escuchando propuestas"
 }
