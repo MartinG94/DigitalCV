@@ -1,10 +1,8 @@
 const express = require('express');
 const { requireAuth } = require('../middleware/authMiddleware');
-const { ensureJsonFile, readJsonFile, writeJsonFile } = require('../utils/jsonStorage');
+const { createEvent, readEvents, readRecentEvents } = require('../services/analyticsRepository');
 
 const router = express.Router();
-const eventsFile = 'analytics/events.json';
-const maxEvents = 3000;
 
 function dateKey(timestamp) {
   return new Date(timestamp).toISOString().slice(0, 10);
@@ -75,17 +73,9 @@ function cleanEvent(input, req) {
   return event;
 }
 
-async function readEvents() {
-  await ensureJsonFile(eventsFile, []);
-  const events = await readJsonFile(eventsFile);
-  return Array.isArray(events) ? events : [];
-}
-
 async function handleInteraction(req, res, next) {
   try {
-    const events = await readEvents();
-    events.push(cleanEvent(req.body, req));
-    await writeJsonFile(eventsFile, events.slice(-maxEvents));
+    await createEvent(cleanEvent(req.body, req));
     res.status(201).json({ ok: true });
   } catch (error) {
     next(error);
@@ -103,7 +93,7 @@ async function handleSummary(_req, res, next) {
 async function handleRecent(req, res, next) {
   try {
     const limit = Math.min(Number(req.query.limit) || 50, 200);
-    res.json((await readEvents()).slice(-limit).reverse());
+    res.json(await readRecentEvents(limit));
   } catch (error) {
     next(error);
   }

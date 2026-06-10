@@ -7,9 +7,9 @@ DigitalCV es un CV/portfolio web interactivo para Martin Guillen. El sitio publi
 - Backend: Node.js, Express.
 - Frontend: React real, ReactDOM, React Router y Vite.
 - Estilos: Bootstrap 5 + CSS propio responsive con modo claro/oscuro.
-- Persistencia inicial: JSON local en `server/data`.
+- Persistencia: MongoDB con Mongoose.
 - Auth admin: JWT con credenciales desde variables de entorno.
-- Metricas: registros anonimos en `server/data/analytics/events.json`.
+- Metricas: registros anonimos en la coleccion `analytics_events`.
 
 ## Estructura
 
@@ -55,11 +55,43 @@ ADMIN_USER=admin
 ADMIN_PASSWORD=secret
 JWT_SECRET=change-this-secret
 PORT=3000
+MONGODB_URI=mongodb://127.0.0.1:27017/digitalcv
 ```
 
 `.env` esta ignorado por Git.
 
+## Migracion desde JSON
+
+Los JSON originales de `server/data` quedan como respaldo y fuente de importacion. Para cargar esos datos en MongoDB:
+
+```bash
+npm install
+npm run migrate:json
+```
+
+El script usa `MONGODB_URI` y no duplica documentos si se ejecuta mas de una vez. Por defecto inserta solo recursos o eventos faltantes. Si queres sobrescribir MongoDB con el contenido actual de los JSON:
+
+```bash
+npm run migrate:json -- --force
+```
+
 ## Desarrollo
+
+MongoDB debe estar corriendo antes de iniciar el backend. Para MongoDB local, usar en `.env`:
+
+```bash
+MONGODB_URI=mongodb://127.0.0.1:27017/digitalcv
+```
+
+Opciones para levantar MongoDB local:
+
+```bash
+# Si MongoDB esta instalado como servicio de Windows
+net start MongoDB
+
+# O con Docker Desktop corriendo
+docker run --name digitalcv-mongo -p 27017:27017 -d mongo:7
+```
 
 ```bash
 npm run dev
@@ -147,23 +179,27 @@ El dashboard usa React Router real:
 
 `AdminLayout` usa `Outlet` y un `ErrorBoundary` por seccion para que un error local no rompa sidebar, navbar ni logout.
 
-En `/admin/settings`, la seccion `CV en PDF` permite subir el PDF que usa el boton `Descargar CV` del navbar publico. El archivo debe ser PDF y pesar hasta 5 MB. Al subirlo, queda disponible publicamente en `/uploads/cv/cv.pdf` y `server/data/settings.json` guarda `cvUrl`, `cvFileName` y `cvUpdatedAt`.
+En `/admin/settings`, la seccion `CV en PDF` permite subir el PDF que usa el boton `Descargar CV` del navbar publico. El archivo debe ser PDF y pesar hasta 5 MB. Al subirlo, queda disponible publicamente en `/uploads/cv/cv.pdf` y MongoDB guarda `cvUrl`, `cvFileName` y `cvUpdatedAt` dentro del recurso `settings`.
 
 ## Datos
 
-Los datos se editan desde el admin o directamente en `server/data`:
+Los datos se editan desde el admin y se persisten en MongoDB:
 
-- `profile.json`
-- `experience.json`
-- `education.json`
-- `skills.json`
-- `projects.json`
-- `achievements.json`
-- `settings.json`
+- `profile`
+- `experience`
+- `education`
+- `skills`
+- `projects`
+- `achievements`
+- `settings`
 
-## Limitaciones de JSON local
+Los archivos JSON de `server/data` no se usan como persistencia principal. Se conservan para respaldo y para ejecutar `npm run migrate:json`.
 
-La persistencia JSON sirve para esta primera version, pero en hostings gratuitos puede no ser persistente o perder cambios al redeployar. La estructura queda preparada para migrar luego a SQLite, PostgreSQL, MongoDB, Supabase o Firebase.
+## Persistencia MongoDB
+
+La conexion esta centralizada en `server/config/mongodb.js` y usa `MONGODB_URI`. Los recursos de contenido se guardan en `content_resources`, manteniendo el payload original en `value` para no cambiar los contratos del frontend. Los eventos de metricas se guardan como documentos individuales en `analytics_events`.
+
+Si MongoDB no conecta al arrancar, el backend no queda escuchando a medias: muestra el error real y termina el proceso. Si la conexion se pierde durante la ejecucion, los endpoints que requieren datos responden `503` con un mensaje claro en vez de dejar la request pendiente.
 
 El PDF cargado desde el admin se guarda actualmente en filesystem local: `server/uploads/cv/cv.pdf`. Esto funciona localmente y puede funcionar en algunos hostings, pero en hostings gratuitos con filesystem efimero el archivo puede perderse al redeployar o reiniciar. En una version futura conviene migrar estos archivos a almacenamiento persistente como Supabase Storage, Cloudinary, S3 compatible, Firebase Storage u otro servicio equivalente.
 
@@ -173,6 +209,7 @@ El PDF cargado desde el admin se guarda actualmente en filesystem local: `server
 npm run dev
 npm run dev:server
 npm run dev:client
+npm run migrate:json
 npm run build
 npm start
 npm run test
@@ -208,6 +245,6 @@ npx kill-port 3000
 
 Tambien se puede configurar otro puerto para Express con `PORT`, por ejemplo `PORT=3001`, pero en desarrollo local el proxy de Vite esta preparado para `http://localhost:3000`.
 
-### Reinicios de nodemon por metricas
+### MongoDB no conectado
 
-`nodemon.json` ignora `server/data/analytics/**` para que los eventos enviados a `/api/interaction` no reinicien el backend mientras se navega por el sitio.
+Si el backend no arranca o los endpoints responden `503`, revisar que `.env` tenga `MONGODB_URI`, que MongoDB este corriendo y que se haya ejecutado `npm run migrate:json` al menos una vez para importar el contenido inicial.

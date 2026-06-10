@@ -1,7 +1,7 @@
 const express = require('express');
 const fs = require('fs/promises');
 const path = require('path');
-const { resources, readResource } = require('../utils/jsonStorage');
+const { resources, readResource } = require('../services/contentRepository');
 
 const router = express.Router();
 const publicResources = Object.keys(resources).filter((resource) => resource !== 'settings');

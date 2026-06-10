@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 const { requireAuth, signAdminToken } = require('../middleware/authMiddleware');
-const { resources, readResource, writeResource } = require('../utils/jsonStorage');
+const { resources, readAllResources, readResource, writeResource } = require('../services/contentRepository');
 
 const router = express.Router();
 const editableResources = Object.keys(resources);
@@ -202,8 +202,7 @@ router.post('/settings/cv', requireAuth, (req, res, next) => {
 
 router.get('/content', requireAuth, async (_req, res, next) => {
   try {
-    const entries = await Promise.all(editableResources.map(async (resource) => [resource, await readResource(resource)]));
-    res.json(Object.fromEntries(entries));
+    res.json(await readAllResources(editableResources));
   } catch (error) {
     next(error);
   }

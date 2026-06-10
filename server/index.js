@@ -1,13 +1,12 @@
-require('dotenv').config();
-
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const fs = require('fs');
+require('dotenv').config({ path: path.join(__dirname, '..', '.env'), quiet: true });
 const publicRoutes = require('./routes/publicRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const analyticsRoutes = require('./routes/analyticsRoutes');
-const { ensureJsonFile } = require('./utils/jsonStorage');
+const { connectMongo, getMongoConnectionInfo, getMongoState } = require('./config/mongodb');
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
@@ -70,46 +69,38 @@ if (isProduction && fs.existsSync(clientIndexPath)) {
 app.use((error, _req, res, _next) => {
   console.error(error);
   res.status(error.status || 500).json({
-    message: 'No se pudo procesar la solicitud.',
+    message: error.code === 'MONGO_NOT_CONNECTED' ? error.message : 'No se pudo procesar la solicitud.',
     detail: process.env.NODE_ENV === 'production' ? undefined : error.message
   });
 });
 
-async function prepareDataFiles() {
-  await ensureJsonFile('settings.json', {
-    siteTitle: 'DigitalCV | Martin Guillen',
-    heroSubtitle: 'CV interactivo para recruiters y oportunidades profesionales.',
-    aboutText: 'Perfil orientado al analisis, desarrollo y mantenimiento de soluciones web y sistemas de gestion.',
-    email: 'martin.guillen@example.com',
-    linkedin: 'https://www.linkedin.com/in/completar-linkedin',
-    github: 'https://github.com/completar-github',
-    cvPdf: '',
-    cvFileName: '',
-    cvUrl: '',
-    cvUpdatedAt: '',
-    primaryButtonText: 'Contactar',
-    availability: 'Escuchando propuestas'
+function startServer() {
+  const server = app.listen(PORT, () => {
+    console.log(`DigitalCV API escuchando en http://localhost:${PORT}`);
+    console.log(`MongoDB: ${getMongoState()}`);
   });
-  await ensureJsonFile('analytics/events.json', []);
-}
 
-prepareDataFiles()
-  .then(() => {
-    const server = app.listen(PORT, () => {
-      console.log(`DigitalCV API escuchando en http://localhost:${PORT}`);
-    });
-
-    server.on('error', (error) => {
-      if (error.code === 'EADDRINUSE') {
-        console.error(`El puerto ${PORT} ya está en uso. Cerrá el proceso anterior o configurá otro puerto con PORT.`);
-        process.exit(1);
-      }
-
-      console.error('No se pudo iniciar DigitalCV API.', error);
+  server.on('error', (error) => {
+    if (error.code === 'EADDRINUSE') {
+      console.error(`El puerto ${PORT} ya esta en uso. Cerra el proceso anterior o configura otro puerto con PORT.`);
       process.exit(1);
-    });
-  })
-  .catch((error) => {
-    console.error('No se pudo preparar DigitalCV.', error);
+    }
+
+    console.error('No se pudo iniciar DigitalCV API.', error);
     process.exit(1);
   });
+}
+
+async function boot() {
+  const mongoInfo = getMongoConnectionInfo();
+  console.log(`[MongoDB] Variable MONGODB_URI: ${mongoInfo.hasUri ? 'configurada' : 'no configurada'}.`);
+
+  await connectMongo();
+  startServer();
+}
+
+boot().catch((error) => {
+  console.error(`[MongoDB] No se pudo conectar (${getMongoState()}): ${error.message}`);
+  console.error('DigitalCV API no se inicio porque MongoDB es requerido para los endpoints de contenido.');
+  process.exit(1);
+});
