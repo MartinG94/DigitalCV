@@ -1,5 +1,5 @@
 import React from 'react';
-import { h } from '../../components/ui.js';
+import { h, EmptyState, LoadingState, StatusMessage } from '../../components/ui.js';
 import { StatCard } from '../../components/admin/StatCard.js';
 import { getRecentEvents, getStatsSummary } from '../../services/adminService.js';
 
@@ -115,9 +115,9 @@ export function AdminStats() {
   return h(
     'section',
     null,
-    h('div', { className: 'admin-page-title' }, h('h1', null, 'Estadisticas'), h('p', null, 'Eventos anonimos guardados en JSON local.')),
-    state.summaryLoading && h('p', { className: 'muted' }, 'Cargando estadisticas...'),
-    state.error && h('div', { className: 'alert alert-warning' }, state.error),
+    h('div', { className: 'admin-page-title' }, h('div', null, h('h1', null, 'Estadisticas'), h('p', null, 'Eventos anonimos registrados en MongoDB.'))),
+    state.summaryLoading && h(LoadingState, { title: 'Cargando estadisticas', message: 'Calculando visitas, clicks y actividad reciente.' }),
+    h(StatusMessage, { tone: 'warning' }, state.error),
     h(
       'div',
       { className: 'admin-stat-grid' },
@@ -140,9 +140,9 @@ export function AdminStats() {
       { className: 'admin-panel' },
       h('h2', null, 'Ultimos eventos'),
       state.recentLoading
-        ? h('p', { className: 'muted' }, 'Cargando eventos...')
+        ? h(LoadingState, { title: 'Cargando eventos', message: 'Buscando los ultimos registros.' })
         : state.recentError
-          ? h('p', { className: 'muted' }, state.recentError)
+          ? h(StatusMessage, { tone: 'warning' }, state.recentError)
           : events.length
           ? h(
             'div',
@@ -158,7 +158,7 @@ export function AdminStats() {
               )
             )
           )
-          : h('p', { className: 'muted' }, 'Todavia no hay eventos para mostrar.')
+          : h(EmptyState, { title: 'Sin eventos todavia', message: 'Cuando el sitio reciba visitas o clicks, apareceran aca.' })
     )
   );
 }

@@ -14,7 +14,7 @@ export function ThemeToggle() {
       title: isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro',
       'aria-label': isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'
     },
-    h('span', null, isDark ? 'L' : 'D'),
+    h('span', { 'aria-hidden': true }, isDark ? 'L' : 'D'),
     h('strong', null, isDark ? 'Claro' : 'Oscuro')
   );
 }

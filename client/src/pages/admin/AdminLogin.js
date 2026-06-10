@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { h } from '../../components/ui.js';
+import { h, StatusMessage } from '../../components/ui.js';
 import { ThemeToggle } from '../../components/ThemeToggle.js';
 import { useAuth } from '../../context/AuthContext.jsx';
 
@@ -40,7 +40,7 @@ export function AdminLogin() {
       { className: 'admin-login-card' },
       h('div', { className: 'admin-login-header' }, h('h1', null, 'Admin DigitalCV'), h(ThemeToggle)),
       h('p', null, 'Acceso privado para editar contenido y revisar estadisticas.'),
-      error && h('div', { className: 'alert alert-danger', role: 'alert' }, error),
+      h(StatusMessage, { tone: 'danger' }, error),
       h(
         'form',
         { onSubmit },
@@ -53,6 +53,7 @@ export function AdminLogin() {
             value: form.username,
             required: true,
             autoComplete: 'username',
+            placeholder: 'Usuario administrador',
             onChange: (event) => update('username', event.target.value)
           })
         ),
@@ -66,6 +67,7 @@ export function AdminLogin() {
             value: form.password,
             required: true,
             autoComplete: 'current-password',
+            placeholder: 'Contrasena',
             onChange: (event) => update('password', event.target.value)
           })
         ),

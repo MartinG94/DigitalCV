@@ -11,9 +11,9 @@ export function ExperienceCard({ item }) {
     { className: 'card timeline-card' },
     h('div', { className: 'card-meta' }, item.period),
     h('h3', null, item.position),
-    h('p', { className: 'muted' }, `${item.company} · ${item.location}`),
+    h('p', { className: 'muted' }, [item.company, item.location].filter(Boolean).join(' · ')),
     h('p', null, item.summary),
-    h('ul', null, ...ensureArray(item.responsibilities).map((task) => h('li', { key: task }, task))),
+    ensureArray(item.responsibilities).length > 0 && h('ul', null, ...ensureArray(item.responsibilities).map((task) => h('li', { key: task }, task))),
     h('div', { className: 'badge-row' }, ...ensureArray(item.technologies).map((tech) => h(SkillBadge, { key: tech, skill: tech })))
   );
 }
@@ -24,7 +24,7 @@ export function EducationCard({ item }) {
     { className: 'card' },
     h('div', { className: 'card-meta' }, item.period),
     h('h3', null, item.degree),
-    h('p', { className: 'muted' }, `${item.institution} · ${item.location}`),
+    h('p', { className: 'muted' }, [item.institution, item.location].filter(Boolean).join(' · ')),
     h('p', null, item.details)
   );
 }
@@ -40,7 +40,7 @@ export function ProjectCard({ project }) {
       { className: 'project-media' },
       project.image ? h('img', { src: project.image, alt: `Imagen del proyecto ${project.name}` }) : h('span', null, '</>')
     ),
-    h('div', { className: 'status-pill' }, project.status),
+    project.status && h('div', { className: 'status-pill' }, project.status),
     h('h3', null, project.name),
     h('p', null, project.description),
     h('div', { className: 'badge-row' }, ...ensureArray(project.technologies).map((tech) => h(SkillBadge, { key: tech, skill: tech }))),
@@ -52,6 +52,7 @@ export function ProjectCard({ project }) {
           h(
             'a',
             {
+              className: 'btn btn-secondary btn-small',
               href: project.githubUrl,
               target: '_blank',
               rel: 'noreferrer',
@@ -63,6 +64,7 @@ export function ProjectCard({ project }) {
           h(
             'a',
             {
+              className: 'btn btn-outline btn-small',
               href: project.demoUrl,
               target: '_blank',
               rel: 'noreferrer',

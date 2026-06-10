@@ -6,7 +6,9 @@ const ThemeContext = React.createContext(null);
 
 function getInitialTheme() {
   try {
-    return localStorage.getItem(storageKey) || 'light';
+    const stored = localStorage.getItem(storageKey);
+    if (stored) return stored;
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   } catch (_error) {
     return 'light';
   }

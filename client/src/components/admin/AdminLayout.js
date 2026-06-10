@@ -23,7 +23,7 @@ export function AdminLayout() {
     h(
       'aside',
       { className: 'admin-sidebar' },
-      h('a', { className: 'brand admin-brand', href: '/', onClick: (event) => undefined }, h('span', null, 'MG'), h('strong', null, 'Admin')),
+      h('a', { className: 'brand admin-brand', href: '/' }, h('span', null, 'MG'), h('strong', null, 'Admin')),
       h(
         'nav',
         { className: 'admin-menu', 'aria-label': 'Navegacion admin' },
@@ -34,6 +34,7 @@ export function AdminLayout() {
               key: href,
               type: 'button',
               className: location.pathname === href ? 'active' : '',
+              'aria-current': location.pathname === href ? 'page' : undefined,
               onClick: () => navigate(href)
             },
             label

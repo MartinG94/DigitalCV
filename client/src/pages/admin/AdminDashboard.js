@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { h } from '../../components/ui.js';
+import { h, LoadingState, StatusMessage } from '../../components/ui.js';
 import { StatCard } from '../../components/admin/StatCard.js';
 import { getStatsSummary } from '../../services/adminService.js';
 
@@ -29,8 +29,9 @@ export function AdminDashboard() {
   return h(
     'section',
     null,
-    h('div', { className: 'admin-page-title' }, h('h1', null, 'Resumen general'), h('p', null, 'Metricas basicas del sitio publico y accesos recientes.')),
-    state.error && h('div', { className: 'alert alert-danger' }, state.error),
+    h('div', { className: 'admin-page-title' }, h('div', null, h('h1', null, 'Resumen general'), h('p', null, 'Indicadores rapidos del sitio publico y accesos recientes.'))),
+    state.loading && h(LoadingState, { title: 'Cargando resumen', message: 'Consultando metricas del sitio.' }),
+    h(StatusMessage, { tone: 'danger' }, state.error),
     h(
       'div',
       { className: 'admin-stat-grid' },
@@ -46,7 +47,6 @@ export function AdminDashboard() {
       { className: 'admin-action-row' },
       h('button', { className: 'btn', type: 'button', onClick: () => navigate('/admin/content') }, 'Editar contenido'),
       h('button', { className: 'btn btn-secondary', type: 'button', onClick: () => navigate('/admin/stats') }, 'Ver estadisticas')
-    ),
-    state.loading && h('p', { className: 'muted' }, 'Cargando resumen...')
+    )
   );
 }

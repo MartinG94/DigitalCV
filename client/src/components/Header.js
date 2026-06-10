@@ -5,9 +5,9 @@ import { useAuth } from '../context/AuthContext.jsx';
 import { trackEvent } from '../services/trackingService.js';
 
 const navItems = [
-  ['Sobre mí', '#sobre-mi'],
+  ['Sobre mi', '#sobre-mi'],
   ['Experiencia', '#experiencia'],
-  ['Formación', '#formacion'],
+  ['Formacion', '#formacion'],
   ['Habilidades', '#habilidades'],
   ['Proyectos', '#proyectos'],
   ['Logros', '#logros'],
@@ -30,7 +30,7 @@ export function Header({ profile }) {
     { className: 'site-header' },
     h(
       'nav',
-      { className: 'navbar navbar-expand-lg app-navbar', 'aria-label': 'Navegación principal' },
+      { className: 'navbar navbar-expand-lg app-navbar', 'aria-label': 'Navegacion principal' },
       h(
         'div',
         { className: 'container app-navbar-inner' },
@@ -42,7 +42,7 @@ export function Header({ profile }) {
             type: 'button',
             'aria-controls': 'public-navbar-menu',
             'aria-expanded': isMenuOpen,
-            'aria-label': isMenuOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación',
+            'aria-label': isMenuOpen ? 'Cerrar menu de navegacion' : 'Abrir menu de navegacion',
             onClick: () => setIsMenuOpen((current) => !current)
           },
           h('span', { className: 'navbar-toggler-icon' })

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { h } from './components/ui.js';
+import { h, LoadingState } from './components/ui.js';
 import { Home } from './pages/Home.jsx';
 import { getCvData } from './services/api.js';
 import { trackEvent } from './services/trackingService.js';
@@ -86,7 +86,7 @@ function ProtectedRoute({ children }) {
   const auth = useAuth();
 
   if (auth.status === 'checking') {
-    return h('main', { className: 'loading-screen' }, h('div', { className: 'loader' }), h('p', null, 'Verificando sesion...'));
+    return h('main', { className: 'loading-screen' }, h(LoadingState, { title: 'Verificando sesion', message: 'Validando tu acceso al dashboard.' }));
   }
 
   if (auth.status !== 'authenticated') {
@@ -98,7 +98,11 @@ function ProtectedRoute({ children }) {
 
 function HomeRoute({ state }) {
   if (state.status === 'loading') {
-    return h('main', { className: 'loading-screen' }, h('div', { className: 'loader' }), h('p', null, 'Cargando DigitalCV...'));
+    return h(
+      'main',
+      { className: 'loading-screen' },
+      h(LoadingState, { title: 'Cargando DigitalCV', message: 'Consultando perfil, proyectos y datos de contacto.' })
+    );
   }
 
   if (state.status === 'error') {
@@ -106,7 +110,8 @@ function HomeRoute({ state }) {
       'main',
       { className: 'loading-screen error-screen' },
       h('h1', null, 'No se pudo cargar el CV'),
-      h('p', null, state.error?.message || 'Error inesperado.')
+      h('p', null, state.error?.message || 'Revisa que el backend y MongoDB esten corriendo.'),
+      h('button', { className: 'btn', type: 'button', onClick: () => window.location.reload() }, 'Reintentar')
     );
   }
 
